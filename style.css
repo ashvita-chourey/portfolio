@@ -39,8 +39,13 @@ nav {
   color: #0f172a;
 }
 
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
 nav a {
-  margin-left: 26px;
   text-decoration: none;
   color: #475569;
   font-weight: 600;
@@ -73,9 +78,10 @@ nav a:hover {
 }
 
 .hero h1 {
+  font-family: "Playfair Display", serif;
   font-size: clamp(44px, 6vw, 78px);
   line-height: 0.98;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.04em;
   margin-bottom: 24px;
 }
 
@@ -122,39 +128,60 @@ nav a:hover {
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
 }
 
-/* HERO GLASS CARD */
-.hero-card {
-  background: rgba(255, 255, 255, 0.68);
-  backdrop-filter: blur(22px);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  border-radius: 34px;
-  padding: 30px;
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.12);
+/* PROFILE IMAGE */
+.profile-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hero-card h3 {
-  font-size: 18px;
-  margin-bottom: 18px;
-  color: #2563eb;
+.blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: linear-gradient(135deg, #bfdbfe, #dbeafe, #eff6ff);
+  border-radius: 38% 62% 57% 43% / 42% 39% 61% 58%;
+  z-index: 0;
 }
 
-.metric {
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+.profile-img {
+  position: relative;
+  z-index: 1;
+  width: 360px;
+  height: 430px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 42% 58% 48% 52% / 45% 40% 60% 55%;
+  box-shadow: 0 35px 90px rgba(37, 99, 235, 0.22);
+  border: 6px solid rgba(255, 255, 255, 0.85);
 }
 
-.metric:last-child {
-  border-bottom: none;
+/* STATS */
+.quick-stats {
+  padding: 20px 8% 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 
-.metric strong {
+.stat-card {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.stat-card strong {
   display: block;
-  font-size: 28px;
+  font-size: 32px;
+  color: #2563eb;
   letter-spacing: -0.04em;
 }
 
-.metric span {
-  color: #64748b;
+.stat-card span {
+  color: #475569;
   font-size: 14px;
 }
 
@@ -164,8 +191,9 @@ section {
 }
 
 .section-title {
+  font-family: "Playfair Display", serif;
   font-size: 42px;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.03em;
   margin-bottom: 18px;
 }
 
@@ -217,7 +245,8 @@ section {
   color: #475569;
 }
 
-.card .tag {
+.card .tag,
+.tag {
   display: inline-block;
   margin-bottom: 16px;
   color: #2563eb;
@@ -248,7 +277,7 @@ section {
 .timeline {
   display: grid;
   gap: 20px;
-  max-width: 950px;
+  max-width: 1100px;
 }
 
 .experience-card {
@@ -286,6 +315,55 @@ section {
   margin-bottom: 8px;
 }
 
+/* TRAVEL */
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.travel-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.09);
+  transition: 0.3s ease;
+}
+
+.travel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.13);
+}
+
+.travel-card img {
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+}
+
+.travel-content {
+  padding: 22px;
+}
+
+.travel-content h3 {
+  color: #2563eb;
+  font-size: 21px;
+  margin-bottom: 5px;
+}
+
+.location {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.travel-content p {
+  color: #475569;
+}
+
 /* CONTACT */
 .contact {
   text-align: center;
@@ -303,8 +381,9 @@ section {
 }
 
 .contact-box h2 {
+  font-family: "Playfair Display", serif;
   font-size: 42px;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.03em;
   margin-bottom: 14px;
 }
 
@@ -328,13 +407,28 @@ footer {
     gap: 14px;
   }
 
-  nav a {
-    margin: 0 8px;
+  .nav-links {
+    justify-content: center;
+    gap: 14px;
   }
 
   .hero {
     grid-template-columns: 1fr;
     padding-top: 70px;
+  }
+
+  .profile-img {
+    width: 290px;
+    height: 360px;
+  }
+
+  .blob {
+    width: 330px;
+    height: 330px;
+  }
+
+  .quick-stats {
+    grid-template-columns: 1fr;
   }
 
   .bento {
@@ -349,75 +443,12 @@ footer {
   .experience-card {
     grid-template-columns: 1fr;
   }
-}
-.profile-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.blob {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  background: linear-gradient(135deg, #bfdbfe, #dbeafe, #eff6ff);
-  border-radius: 38% 62% 57% 43% / 42% 39% 61% 58%;
-  filter: blur(0px);
-  z-index: 0;
-}
-
-.profile-img {
-  position: relative;
-  z-index: 1;
-  width: 360px;
-  height: 430px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 42% 58% 48% 52% / 45% 40% 60% 55%;
-  box-shadow: 0 35px 90px rgba(37, 99, 235, 0.22);
-  border: 6px solid rgba(255, 255, 255, 0.85);
-}
-
-.quick-stats {
-  padding: 20px 8% 60px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.stat-card {
-  background: rgba(255, 255, 255, 0.76);
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
-}
-
-.stat-card strong {
-  display: block;
-  font-size: 32px;
-  color: #2563eb;
-  letter-spacing: -0.04em;
-}
-
-.stat-card span {
-  color: #475569;
-  font-size: 14px;
-}
-
-@media (max-width: 900px) {
-  .profile-img {
-    width: 290px;
-    height: 360px;
-  }
-
-  .blob {
-    width: 330px;
-    height: 330px;
-  }
-
-  .quick-stats {
+  .travel-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 44px;
   }
 }
